@@ -27,11 +27,24 @@ public class Curso {
 	}
 	
 	public List<Aula> getAulas() {
-		//Retorna uma lista que não é possível adicionar ou remover elementos pelo getAulas
+		//Retorna uma lista que não é possível manipular(adicionar, remover...) que não seja pela classe Curso
 		return Collections.unmodifiableList(aulas);
 	}
 	
 	public void adiciona(Aula aula) {
 		this.aulas.add(aula);
+	}
+	
+	public int getTempo() {
+		int total = 0;
+		for (Aula aula : aulas) {
+			total += aula.getTempo();
+		}
+		return total;
+	}
+	
+	@Override
+	public String toString() {
+		return "[Curso: " + nome + " duração total "+ this.getTempo() +" Aulas: " + aulas ;
 	}
 }
